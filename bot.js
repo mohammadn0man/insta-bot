@@ -1,9 +1,14 @@
 (() => {
     let i = 0;
     let count = 0;
+    let old_length = 0;
     function dosomething() {
         const newInterval = setInterval(() => {
             const btn = document.querySelectorAll('button');
+            if(old_length != btn.length){
+                i = 0;
+                old_length = btn.length;
+            }
             const nxt_btn = btn[i];
             if (nxt_btn !== undefined && nxt_btn.textContent.toLowerCase() === 'follow') {
                 nxt_btn.click();
