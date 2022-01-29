@@ -1,4 +1,7 @@
 (() => {
+    const BATCH_DELAY = 3600000; // value is in milliseconds
+    const BATCH_SIZE = 30;
+    let sno = 1;
     let i = 0;
     let count = 0;
     let old_length = 0;
@@ -9,21 +12,21 @@
                 i = 0;
                 old_length = btn.length;
             }
-            const nxt_btn = btn[i];
+            let nxt_btn = btn[i];
             if (nxt_btn !== undefined && nxt_btn.textContent.toLowerCase() === 'follow') {
                 nxt_btn.click();
-                console.log("Followed : " + (count+1) + ". " + nxt_btn.parentElement.parentElement.childNodes[1].firstElementChild.firstElementChild.firstElementChild.firstElementChild.text);
+                console.log("Followed : " + (sno++) + ". ");
                 count++;
             }
             i++;
-            if(count >= 30){
+            if(count >= BATCH_SIZE){
                 console.log("sleep for 1 hrs ");
                 count = 0;
                 i = 0;
                 clearInterval(newInterval);
             }
-        }, 1000)
+        }, 500)
     }
     dosomething();
-    setInterval(dosomething, 360000);
+    setInterval(dosomething, BATCH_DELAY);
 })()
