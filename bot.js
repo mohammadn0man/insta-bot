@@ -15,14 +15,17 @@
             let nxt_btn = btn[i];
             if (nxt_btn !== undefined && nxt_btn.textContent.toLowerCase() === 'follow') {
                 nxt_btn.click();
-                console.log("Followed : " + (sno++) + ". ");
+                console.log("LF: Followed : " + (sno++) + ". ");
                 count++;
             }
             i++;
             if(count >= BATCH_SIZE){
-                console.log("sleep for 1 hrs ");
+                console.log("LF: sleep for 1 hrs ");
                 count = 0;
                 i = 0;
+                let currentDate = new Date();
+                let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+                console.log("LF: AT : " + time);
                 clearInterval(newInterval);
             }
         }, 500)
