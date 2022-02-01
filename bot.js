@@ -1,6 +1,6 @@
 (() => {
-    const BATCH_DELAY = 3600000; // value is in milliseconds
-    const BATCH_SIZE = 30;
+    const BATCH_DELAY = 300000; // value is in milliseconds
+    const BATCH_SIZE = 3;
     let sno = 1;
     let i = 0;
     let count = 0;
