@@ -14,23 +14,25 @@
             }
             let nxt_btn = btn[i];
             if (nxt_btn !== undefined && nxt_btn.textContent.toLowerCase() === 'follow') {
-                // nxt_btn.click();
-                let name = nxt_btn.parentElement.parentElement.childNodes[1];
-                // try {
-                //     name= nxt_btn.parentElement.parentElement.childNodes[1].firstElementChild.firstElementChild.firstElementChild.firstElementChild.text;
-                // } catch (err) {
-                //     name = undefined;
-                // }
-                // if (name === undefined){
-                    // name = nxt_btn.parentElement.parentElement.childNodes[1].firstElementChild.firstElementChild.textContent;
-                // }
+                nxt_btn.click();
+                let name = '';
+                try {
+                    name = nxt_btn.parentElement.parentElement.childNodes[1].firstElementChild.firstElementChild.firstElementChild.firstElementChild.text;
+                } catch (err) {
+                    name = undefined;
+                }
+                if (name === undefined || name === ''){
+                    try {
+                        name = nxt_btn.parentElement.parentElement.childNodes[1].firstElementChild.firstElementChild.textContent;
+                    } catch (err) { name = 'not_found'}
+                }
                 console.log("Followed : " + (sno++) + ". ");
                 console.log(name);
                 count++;
             }
             i++;
             if(count >= BATCH_SIZE){
-                console.log("sleep for 1 hrs ");
+                console.log("sleep " + (BATCH_DELAY/1000) + " seconds.");
                 count = 0;
                 i = 0;
                 clearInterval(newInterval);
